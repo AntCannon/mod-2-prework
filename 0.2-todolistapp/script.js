@@ -1,6 +1,8 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+// add task functionality
+
 function addTask(){
   if (inputBox.value === "") {
     alert("You must write something!");
@@ -17,6 +19,8 @@ function addTask(){
   saveData();
 }
 
+// click functionality to list items
+
 listContainer.addEventListener("click", function(e) { // listen for click in listContainer
   if (e.target.tagName === "LI") { // if LI tag was clicked
     e.target.classList.toggle("checked"); // toggle the class checked or blank
@@ -27,7 +31,7 @@ listContainer.addEventListener("click", function(e) { // listen for click in lis
   }
 }, false);
 
-// add local storage
+// save/load data to/from local storage
 function saveData() {
   localStorage.setItem("data", listContainer.innerHTML);
 }
