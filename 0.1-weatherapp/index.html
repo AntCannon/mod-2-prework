@@ -46,7 +46,6 @@
     "Rain": "images/rain.png",
     "Drizzle": "images/drizzle.png",
     "Mist": "images/mist.png",
-
   }
 
 async function checkWeather(city = "Bronx") {
@@ -59,7 +58,6 @@ async function checkWeather(city = "Bronx") {
   document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
   document.querySelector(".wind").innerHTML = data.wind.speed + "mph";
   weatherIcon.src = weatherIconMap[data.weather[0].main];
-
 }
 
 searchBtn.addEventListener("click", () => {
