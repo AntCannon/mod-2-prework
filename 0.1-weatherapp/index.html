@@ -11,6 +11,9 @@
       <input type="text" placeholder="enter city name" spellcheck="false">
       <button><img src="images/search.png"></button>
     </div>
+    <div class="error">
+      <p>Invalid City Name</p>
+    </div>
     <div class="weather">
       <img src="images/rain.png" class="weather-icon">
       <h1 class="temp">🧱</h1>
@@ -50,16 +53,22 @@
 
 async function checkWeather(city) {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+  
   var data = await response.json();
-  console.log(data);
-
-  document.querySelector(".city").innerHTML = data.name;
-  document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "℉";
-  document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-  document.querySelector(".wind").innerHTML = data.wind.speed + "mph";
-  weatherIcon.src = weatherIconMap[data.weather[0].main];
-
-  document.querySelector(".weather").style.display = "block";
+  if (response.status === 404) {
+    document.querySelector(".error").style.display = "block";
+    document.querySelector(".weather").style.display = "none";
+  } else {
+    weatherIcon.src = weatherIconMap[data.weather[0].main];
+    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "℉";
+    document.querySelector(".city").innerHTML = data.name;
+    document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+    document.querySelector(".wind").innerHTML = data.wind.speed + "mph";
+    
+    document.querySelector(".weather").style.display = "block";
+    document.querySelector(".error").style.display = "none";
+  }
+ 
 }
 
 searchBtn.addEventListener("click", () => {
