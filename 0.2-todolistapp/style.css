@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  width: 400px;
+  width: 450px;
   height: 200px;
   background: #fff;
   border-radius: 20px;
@@ -28,6 +28,7 @@ body {
   border-radius: 50px;
   background: rgb(235, 234, 234);
   border: none;
+  padding-left: 30px;
 }
 
 button {
