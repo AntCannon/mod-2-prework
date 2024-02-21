@@ -36,10 +36,18 @@
 </body>
 <script>
   const apiKey = "c28be8ddde8f1df733dd23d552ebd167";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&q="
   const searchBox = document.querySelector(".search input")
   const searchBtn = document.querySelector(".search button");
-  
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=imperial&q="
+  const weatherIcon = document.querySelector(".weather-icon")
+  const weatherIconMap = {
+    "Clouds": "images/clouds.png",
+    "Clear": "images/clear.png",
+    "Rain": "images/rain.png",
+    "Drizzle": "images/drizzle.png",
+    "Mist": "images/mist.png",
+
+  }
 
 async function checkWeather(city = "Bronx") {
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -50,6 +58,8 @@ async function checkWeather(city = "Bronx") {
   document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "℉";
   document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
   document.querySelector(".wind").innerHTML = data.wind.speed + "mph";
+  weatherIcon.src = weatherIconMap[data.weather[0].main];
+
 }
 
 searchBtn.addEventListener("click", () => {
