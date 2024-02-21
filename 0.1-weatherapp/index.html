@@ -36,8 +36,15 @@
 </body>
 <script>
   const apiKey = "c28be8ddde8f1df733dd23d552ebd167";
-  let cityName = "New York City";
-  let cUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
+  let cityName = "Bronx";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?&units=imperial&q=${cityName}&appid=${apiKey}`
 
+async function checkWeather() {
+  const response = await fetch(apiUrl);
+  var data = await response.json();
+  console.log(data);
+}
+
+checkWeather();
 </script>
 </html>
