@@ -18,17 +18,27 @@ body {
   text-align: Left;
 }
 
+.title {
+  margin-bottom: 20px;
+}
+
 .container img {
   width: 50px;
 }
 
+.input-bar {
+  display: flex;
+  position: absolute;
+}
+
 .task-input {
-  width: 300px;
+  width: 400px;
   height: 50px;
   border-radius: 50px;
   background: rgb(235, 234, 234);
   border: none;
   padding-left: 30px;
+  position: absolute;
 }
 
 button {
@@ -38,4 +48,6 @@ button {
   border-radius: 50px;
   background: rgb(246, 86, 86);
   border: none;
+  position: relative;
+  margin-left: 350px;
 }
